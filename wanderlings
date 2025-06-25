@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summon a Wanderling</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5f2eb;
+      color: #2e2b28;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+    button {
+      background: #4b4137;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      border-radius: 10px;
+    }
+    .result {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      background: #e4ded5;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧳 Summon a Wanderling</h1>
+  <p>Whisper your name to the Hollow... and roll the dice.</p>
+  <button onclick="generateWanderling()">Roll the Dice 🎲</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    function roll(sides) {
+      return Math.floor(Math.random() * sides) + 1;
+    }
+
+    function generateWanderling() {
+      const names = ["Thimma", "Nock", "Flisk", "Wrenli", "Crum", "Zell", "Marn", "Orrin"];
+      const origins = ["Between attic beams", "Foggy edge of dawn", "Forgotten drawer", "Under a quilt corner", "Behind the last page of a book", "Woven into a shadow", "Folded in moss", "Beneath a lost button"];
+      const roles = ["Carries forgotten dreams", "Holds heavy feelings", "Guards unspoken wishes", "Follows fading paths", "Brings messages in thimbles", "Stitches holes in memory", "Whispers what you won't say", "Collects the things you lose"];
+      const carried = ["A crumbled note", "A pine needle bundle", "A knotted thread", "A cracked button", "A worn feather", "A glass bead", "A stitched star scrap", "A mossy charm"];
+      const restPlaces = ["Inside coat pockets", "Between old books", "On warm windowsills", "Behind teacups", "Under pillows", "In sewing boxes", "Atop candle holders", "In tangled thread jars"];
+
+      const result = `
+        🧵 <strong>Name:</strong> ${names[roll(8)-1]}<br>
+        🌲 <strong>Origin:</strong> ${origins[roll(8)-1]}<br>
+        ✨ <strong>Purpose:</strong> ${roles[roll(8)-1]}<br>
+        🎒 <strong>Carried Within:</strong> ${carried[roll(8)-1]}<br>
+        💤 <strong>Favorite Place to Rest:</strong> ${restPlaces[roll(8)-1]}
+      `;
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
