@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summon Your Stitchling</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #f7f5f0;
+      color: #2c1e1e;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    button {
+      background: #4e3b31;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      border-radius: 8px;
+    }
+    .result {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      background: #e8e3db;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔮 Summon Your Stitchling 🔮</h1>
+  <p>Roll the dice to discover the creature crafted just for you...</p>
+  <button onclick="generateStitchling()">Roll the Dice 🎲</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function roll(sides) {
+      return Math.floor(Math.random() * sides) + 1;
+    }
+
+    function generateStitchling() {
+      const heads = ["Cat with button eyes", "Owl with embroidered feathers", "Dragon with soft felt scales", "Fox with a patchwork face", "Frog with a velvet crown", "Rabbit with moon markings", "Deer with mossy antlers", "Bat with stitched wings"];
+      const bodies = ["Crocheted vines and moss", "Velvet and silver thread", "Old flannel quilt", "Linen with lace trim", "Starlit denim patchwork", "Wool with secret pockets"];
+      const powers = ["Glows under moonlight", "Whispers when you're sad", "Guards your secrets", "Attracts small birds", "Dream weaver", "Invisible when scared", "Hums softly when hugged", "Stitches dreams into fabric", "Never gets lost", "Follows you loyally"];
+      const names = ["[Color] + [Creature]", "[Adjective] + [Object]", "[Mystic Word] + [Name]", "[Month] + kin"];
+      const alignments = ["Benevolent", "Mischievous", "Sleepy", "Curious", "Shy", "Rebellious", "Wandering", "Playful", "Protective", "Wise", "Secretive", "Fierce"];
+      const artifacts = ["A brass thimble", "A key with no door", "A feather from a dream bird", "A cracked button", "A scroll with invisible writing", "A charm of yarn", "A moss-wrapped stone", "A miniature lantern"];
+
+      const result = `
+        🌲 <strong>Head:</strong> ${heads[roll(8)-1]}<br>
+        🧵 <strong>Body:</strong> ${bodies[roll(6)-1]}<br>
+        ✨ <strong>Power:</strong> ${powers[roll(10)-1]}<br>
+        🧚 <strong>Name Style:</strong> ${names[roll(4)-1]}<br>
+        🌀 <strong>Alignment:</strong> ${alignments[roll(12)-1]}<br>
+        🎁 <strong>Artifact:</strong> ${artifacts[roll(8)-1]}
+      `;
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
